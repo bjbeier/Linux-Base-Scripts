@@ -1,4 +1,3 @@
-#!/bin/bash
 # SYNOPSIS
 #       Automate Raspberry Pi Backups
 # DESCRIPTION
@@ -9,7 +8,7 @@
 #       Usage: system_backup.sh {path} {days of retention}
 # NOTES
 #   File Name           : System_Backup.sh
-#   Version             : 0.1
+#   Version             : 0.2
 #   Original Author     : Kristofer Källsbo 2017 www.hackviking.com
 #   Updated Author      : BJ Beier - https://github.com/bjbeier/Linux-Base-Scripts
 

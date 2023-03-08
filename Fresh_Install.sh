@@ -1,4 +1,3 @@
-#!/bin/bash
 # SYNOPSIS
 #       Install default apps and run default configurations. Must be run as ROOT.
 # DESCRIPTION
@@ -12,7 +11,7 @@
 #           4. Schedule daily backup to run at 1AM
 # NOTES
 #   File Name   : Fresh_Instal.sh
-#   Version     : 0.1
+#   Version     : 0.2
 #   Author      : BJ Beier - https://github.com/bjbeier/Linux-Base-Scripts
 
 # Check that we are root!
