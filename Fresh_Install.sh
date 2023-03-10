@@ -4,14 +4,16 @@
 #       Install the follwing applications:
 #           1. nfs-common - Needed for backing up to NAS
 #           2. cifs-utils - Needed to connecto to Windows shares
+#           3. Webmin - Web GUI for server management
 #       Complete the following configurations:
 #           1. Create mount directory for System_Backup.sh
 #           2. Update fstab with backup mount point
 #           3. Mount new mount point
 #           4. Schedule daily backup to run at 1AM
+#           5. Create ssh key directory
 # NOTES
 #   File Name   : Fresh_Instal.sh
-#   Version     : 0.2
+#   Version     : 0.3
 #   Author      : BJ Beier - https://github.com/bjbeier/Linux-Base-Scripts
 
 # Check that we are root!
@@ -28,11 +30,19 @@ fi
 # App Installations
 #
 
+# Update repositories
+apt update
+
 # Install nfs-common
 apt install nfs-common -y
 
 # Install cifs-utils
 apt install cifs-utils -y
+
+# Install Webmin
+curl -o setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh
+sh setup-repos.sh
+apt install webmin
 
 #
 # Configurations
@@ -56,3 +66,6 @@ echo "0 1 * * * /mnt/backups/system_backup.sh" >> mycron
 # Install new cron file
 crontab mycron
 rm mycron
+
+# Create ssh key directory
+mkdir ~/.ssh/
