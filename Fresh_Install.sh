@@ -41,8 +41,9 @@ apt install cifs-utils -y
 
 # Install Webmin
 curl -o setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh
-sh setup-repos.sh
-apt install webmin
+sh setup-repos.sh -y
+apt install webmin -y
+rm -f setup-repos.sh
 
 #
 # Configurations
@@ -52,7 +53,7 @@ apt install webmin
 mkdir /mnt/Backups
 
 # Update fstab with network location for NAS
-echo '192.168.4.140:/volume1/Backups /mnt/backups nfs x-systemd.automount 0 0' >> /etc/fstab
+echo '192.168.4.140:/volume1/Backups /mnt/Backups nfs x-systemd.automount 0 0' >> /etc/fstab
 
 # Mount new location
 mount -a
