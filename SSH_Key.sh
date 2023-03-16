@@ -27,7 +27,7 @@ Echo '2 Copy SSH Key Only'
 Echo '3 Generate SSH Key and Copy'
 Echo 'Enter 1, 2, or 3'
 Read choice
-If [[ $(choice) = "1" ]]; then
+If [ $(choice) = "1" ]; then
     export keypath=~/.ssh/id_rsa
     Echo 'Generate SSH Key'
     Echo 'Enter the passphrase for your SSH Key:'
@@ -35,7 +35,7 @@ If [[ $(choice) = "1" ]]; then
     ssh-keygen -q -t rsa -N $passphrase -f $keypath
     Echo 'Your SSH Key has been created and stored in' $keypath
 fi
-If [[ $(choice) = "2" ]]; then
+If [ $(choice) = "2" ]; then
     Echo 'Copy SSH Key'
     Echo 'Enter username for remote host'
     Read username
@@ -43,7 +43,7 @@ If [[ $(choice) = "2" ]]; then
     Read remotehost
     ssh-copy-id $username@$remotehost
 fi
-If [[ $(choice) = "3" ]]; then
+If [ $(choice) = "3" ]; then
     export keypath=~/.ssh/id_rsa
     Echo 'Generate SSH Key'
     Echo 'Enter the passphrase for your SSH Key:'
