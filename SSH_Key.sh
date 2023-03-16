@@ -21,40 +21,43 @@ exit
 fi
 
 # Choose what to do
-Echo 'Choose an option:'
-Echo '1 Generate SSH Key Only'
-Echo '2 Copy SSH Key Only'
-Echo '3 Generate SSH Key and Copy'
-Echo 'Enter 1, 2, or 3'
-Read choice
-If [ $(choice) = "1" ]; then
+echo 'Choose an option:'
+echo '1 Generate SSH Key Only'
+echo '2 Copy SSH Key Only'
+echo '3 Generate SSH Key and Copy'
+echo 'Enter 1, 2, or 3'
+read choice
+if [ $choice = "1" ];
+then
     export keypath=~/.ssh/id_rsa
-    Echo 'Generate SSH Key'
-    Echo 'Enter the passphrase for your SSH Key:'
-    Read passphrase
+    echo 'Generate SSH Key'
+    echo 'Enter the passphrase for your SSH Key:'
+    read passphrase
     ssh-keygen -q -t rsa -N $passphrase -f $keypath
-    Echo 'Your SSH Key has been created and stored in' $keypath
+    echo 'Your SSH Key has been created and stored in' $keypath
 fi
-If [ $(choice) = "2" ]; then
-    Echo 'Copy SSH Key'
-    Echo 'Enter username for remote host'
-    Read username
-    Echo 'Enter remote host IP'
-    Read remotehost
+if [ $choice = "2" ];
+then
+    echo 'Copy SSH Key'
+    echo 'Enter username for remote host'
+    read username
+    echo 'Enter remote host IP'
+    read remotehost
     ssh-copy-id $username@$remotehost
 fi
-If [ $(choice) = "3" ]; then
+if [ $choice = "3" ];
+then
     export keypath=~/.ssh/id_rsa
-    Echo 'Generate SSH Key'
-    Echo 'Enter the passphrase for your SSH Key:'
-    Read passphrase
+    echo 'Generate SSH Key'
+    echo 'Enter the passphrase for your SSH Key:'
+    read passphrase
     ssh-keygen -q -t rsa -N $passphrase -f $keypath
-    Echo 'Your SSH Key has been created and stored in' $keypath
-    Echo''
-    Echo 'Copy SSH Key'
-    Echo 'Enter username for remote host'
-    Read username
-    Echo 'Enter remote host IP'
-    Read remotehost
+    echo 'Your SSH Key has been created and stored in' $keypath
+    echo''
+    echo 'Copy SSH Key'
+    echo 'Enter username for remote host'
+    read username
+    echo 'Enter remote host IP'
+    read remotehost
     ssh-copy-id $username@$remotehost
 fi
